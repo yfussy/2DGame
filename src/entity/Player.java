@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -23,6 +24,8 @@ public class Player extends Entity {
 		
 		SCREEN_X = gp.SCREEN_WIDTH/2 - (gp.TILE_SIZE/2);
 		SCREEN_Y = gp.SCREEN_HEIGHT/2 - (gp.TILE_SIZE/2);
+		
+		solidArea = new Rectangle(8, 16, 32, 32);
 		
 		setDefaultValues();
 		getPlayerImage();
@@ -59,19 +62,36 @@ public class Player extends Entity {
 			
 			if (keyH.upPressed == true) {
 				direction = "up";
-				worldY -= speed;
 			} 
 			else if (keyH.downPressed == true) {
 				direction = "down";
-				worldY += speed;
 			} 
 			else if (keyH.leftPressed == true) {
 				direction = "left";
-				worldX -= speed;
 			} 
 			else if (keyH.rightPressed == true) {
 				direction = "right";
-				worldX += speed;
+			}
+			
+			// Check Tile Collision
+			collisionOn = false;
+			gp.cChecker.checkTile(this);
+			
+			if (collisionOn == false) {
+				switch (direction) {
+				case "up":
+					worldY -= speed;
+					break;
+				case "down":
+					worldY += speed;
+					break;
+				case "left":
+					worldX -= speed;
+					break;
+				case "right":
+					worldX += speed;
+					break;
+				}
 			}
 			
 			// Change image every 10 frames
