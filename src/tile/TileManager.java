@@ -24,7 +24,7 @@ public class TileManager {
 		mapTileNum = new int[gp.MAX_SCREEN_COL][gp.MAX_SCREEN_ROW];
 		
 		getTileImage();
-		loadMap();
+		loadMap("/maps/map01.txt");
 	}
 	
 	public void getTileImage() {
@@ -45,12 +45,12 @@ public class TileManager {
 		}
 	}
 	
-	public void loadMap() {
+	public void loadMap(String filePath) {
 		
 		try {
 			
-			InputStream is = getClass().getResourceAsStream("/maps/map01.txt"); // import textfile
-			BufferedReader br = new BufferedReader(new InputStreamReader(is)); // read content in textfile
+			InputStream is = getClass().getResourceAsStream(filePath); // import text file
+			BufferedReader br = new BufferedReader(new InputStreamReader(is)); // read content in text file
 			
 			int col = 0;
 			int row = 0;
@@ -62,13 +62,13 @@ public class TileManager {
 				
 				while (col < gp.MAX_SCREEN_COL) {
 					
-					
 					int num = Integer.parseInt(numbers[col]);
 					
 					mapTileNum[col][row] = num;
 					col++;
 					
 				}
+				
 				if (col == gp.MAX_SCREEN_COL) {
 					col = 0;
 					row++;
@@ -97,7 +97,6 @@ public class TileManager {
 			x += gp.TILE_SIZE;
 			
 			if (col == gp.MAX_SCREEN_COL) {
-				System.out.println("yeye");
 				col = 0;
 				x = 0;
 				row++;
