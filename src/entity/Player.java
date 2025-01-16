@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -195,5 +196,9 @@ public class Player extends Entity {
 			 break;
 		 }
 		 g2.drawImage(image, SCREEN_X, SCREEN_Y, gp.TILE_SIZE, gp.TILE_SIZE, null); // Draw image on screen
+		 
+		 // player solid area marker (show hit box)
+		 g2.setColor(Color.red);
+		 g2.drawRect(SCREEN_X + solidArea.x, SCREEN_Y + solidAreaDefaultY, solidArea.width, solidArea.height);
 	}
 }
