@@ -20,6 +20,7 @@ public class Player extends Entity {
 	public final int SCREEN_Y;
 	
 	public int hasKey = 0;
+	int standCounter = 0;
 	
 	public Player(GamePanel gp, KeyHandler keyH) {
 		
@@ -110,13 +111,20 @@ public class Player extends Entity {
 			
 			// Change image every 10 frames
 			spriteCounter++;
-			if (spriteCounter > 4) {
+			if (spriteCounter > 8) {
 				if (spriteNum == 1) {
 					spriteNum = 2;
 				} else if (spriteNum == 2) {
 					spriteNum = 1;
 				}
 				spriteCounter = 0;
+			}
+		} else {
+			standCounter++;
+			
+			if (standCounter == 16) {
+				spriteNum = 1;
+				standCounter = 0;
 			}
 		}
 	}
@@ -198,7 +206,7 @@ public class Player extends Entity {
 		 g2.drawImage(image, SCREEN_X, SCREEN_Y, gp.TILE_SIZE, gp.TILE_SIZE, null); // Draw image on screen
 		 
 		 // player solid area marker (show hit box)
-		 g2.setColor(Color.red);
-		 g2.drawRect(SCREEN_X + solidArea.x, SCREEN_Y + solidAreaDefaultY, solidArea.width, solidArea.height);
+//		 g2.setColor(Color.red);
+//		 g2.drawRect(SCREEN_X + solidArea.x, SCREEN_Y + solidAreaDefaultY, solidArea.width, solidArea.height);
 	}
 }
