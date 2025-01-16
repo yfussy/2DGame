@@ -1,6 +1,5 @@
-/entity/
+/object/
+/objects/
 /main/
-/player/
-/tile/
-/tiles/
+/entity/
 /maps/

@@ -35,7 +35,7 @@ public class Player extends Entity {
 		
 		worldX = gp.TILE_SIZE * 23;
 		worldY = gp.TILE_SIZE * 21;
-		speed = 4;
+		speed = 10;
 		direction = "down";
 	}
 	
@@ -96,7 +96,7 @@ public class Player extends Entity {
 			
 			// Change image every 10 frames
 			spriteCounter++;
-			if (spriteCounter > 12) {
+			if (spriteCounter > 4) {
 				if (spriteNum == 1) {
 					spriteNum = 2;
 				} else if (spriteNum == 2) {
