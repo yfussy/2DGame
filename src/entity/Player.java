@@ -44,7 +44,7 @@ public class Player extends Entity {
 		
 		worldX = gp.TILE_SIZE * 23;
 		worldY = gp.TILE_SIZE * 21;
-		speed = 10;
+		speed = 6;
 		direction = "down";
 	}
 	
@@ -136,6 +136,9 @@ public class Player extends Entity {
 					gp.obj[i] = null;
 				}
 				break;
+			case "Boots":
+				speed += 2;
+				gp.obj[i] = null;
 			}
 		}
 	}
